@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --cor-destaque: #ED145B;
-    --cor-gradiente-preto: linear-gradient(113deg, #000 0%, #1E2021 44.96%, #1E2022 100%);
+    /* Novas cores para o tema claro */
+    --cor-principal-texto: #2c3e50; /* Um azul/cinza escuro para texto */
+    --cor-botao: #34495e; /* Um tom mais escuro que o texto principal para destaque */
+    --cor-fundo-gradiente: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Gradiente de branco-gelo para cinza-azulado */
+    --cor-texto-botao: #ffffff; /* Texto branco para o botão */
 }
 
 * {
     margin: 0;
     padding: 0;
-    font-family: Montserrat;
+    box-sizing: border-box; /* Boa prática para o layout não quebrar com padding e bordas */
+    font-family: 'Montserrat', sans-serif; /* Corrigido para corresponder à importação */
 }
 
 body {
@@ -16,23 +20,23 @@ body {
     justify-content: center;
     align-items: center;
     padding: 16px 21px 18px 21px;
-    background: var(--cor-gradiente-preto);
+    background: var(--cor-fundo-gradiente); /* NOVO GRADIENTE */
     height: 100vh;
     flex-direction: column;
 }
 
-
 .container {
     display: flex;
     width: 65rem;
+    max-width: 95%; /* Para melhor responsividade em telas menores */
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 2.5rem; /* Ajustei um pouco o gap */
     overflow: hidden;
 }
 
 h1 {
-    color: var(--cor-destaque);
+    color: var(--cor-principal-texto); /* NOVA COR PARA O TÍTULO */
     text-align: center;
     font-size: 2.8rem;
     font-weight: 600;
@@ -42,46 +46,66 @@ h1 {
 #entrada-de-texto {
     display: flex;
     height: 12rem;
-    padding: 1.4rem 2.5rem 2.5rem 2.5rem;
+    padding: 1.4rem 2.5rem;
     align-items: flex-start;
     gap: 0.625rem;
     align-self: stretch;
     border-radius: 0.625rem;
     background: #FFF;
-    font-size: 2rem;
+    font-size: 1.5rem; /* Ajustei para caber mais texto visível */
+    border: 1px solid #dcdcdc; /* Borda sutil */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    resize: vertical; /* Permite que o usuário redimensione a caixa de texto verticalmente */
 }
 
 #entrada-de-texto::placeholder {
     color: #828282;
-    font-size: 2rem;
+    font-size: 1.5rem; /* Ajustado para corresponder ao font-size */
     font-weight: 400;
     line-height: normal;
 }
 
 #botao-palavrachave {
     display: flex;
-    padding: 1.25rem;
+    padding: 1.25rem 2.5rem; /* Aumentei o padding horizontal */
     justify-content: center;
     align-items: center;
     gap: 0.625rem;
     border-radius: 0.5rem;
     border: none;
-    background: var(--cor-destaque);
-    color: #000;
-    font-size: 2.5rem;
+    background: var(--cor-botao); /* NOVA COR PARA O BOTÃO */
+    color: var(--cor-texto-botao); /* NOVA COR PARA O TEXTO DO BOTÃO */
+    font-size: 2rem; /* Ajustado */
     font-weight: 500;
     line-height: normal;
+    cursor: pointer; /* Indica que o botão é clicável */
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Transição suave */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+#botao-palavrachave:hover {
+    background-color: #2c3e50; /* Tom um pouco mais escuro no hover */
+}
+
+#botao-palavrachave:active {
+    transform: scale(0.98); /* Efeito de clique */
 }
 
 #resultado-palavrachave {
     display: flex;
+    flex-wrap: wrap; /* Permite que as palavras quebrem a linha */
+    gap: 10px; /* Espaço entre as palavras-chave */
+    padding: 1rem;
     border-radius: 0.625rem;
     align-self: stretch;
-    color: var(--cor-destaque);
-    font-size: 2.5rem;
+    color: var(--cor-principal-texto); /* NOVA COR PARA O RESULTADO */
+    font-size: 1.8rem; /* Ajustado */
     justify-content: center;
     margin-bottom: 2rem;
+    min-height: 5rem; /* Garante uma altura mínima para o campo de resultado */
     max-width: 100%;
-    max-height: 50vh;
+    max-height: 40vh; /* Ajustado */
     overflow: auto;
+    background-color: rgba(255, 255, 255, 0.5); /* Fundo branco semi-transparente */
+    border: 1px solid #e0e0e0;
 }
